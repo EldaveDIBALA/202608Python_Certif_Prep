@@ -1,0 +1,7 @@
+version: 2
+updates:
+  - package-ecosystem: "pip" # Or poetry, pipenv, etc.
+    directory: "/"
+    schedule:
+      interval: "weekly"
+

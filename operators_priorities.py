@@ -9,3 +9,5 @@ print()
 # Operators and their bindings: exponentiation
 print(2 ** 2 ** 3)
 print()
+
+print(2 * 3 % 5)

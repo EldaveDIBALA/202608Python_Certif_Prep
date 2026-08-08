@@ -48,3 +48,7 @@ print("\n", "Notre salut est en Jésus-Christ notre Seigneur et Sauveur.", "Amen
 print()
 print(True > False)
 print(True < False)
+
+# Python as a calculator
+print()
+print("Je nacquis en 1990.\nCela dit, en cette année 2026, je totalise", 2026-1990, "ans d'âge.")

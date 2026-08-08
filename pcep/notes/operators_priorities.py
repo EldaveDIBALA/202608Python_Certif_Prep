@@ -10,4 +10,9 @@ print()
 print(2 ** 2 ** 3)
 print()
 
-print(2 * 3 % 5)
+# Operators and their priorities: multiplication and modulo
+print(2 * 3 % 5) # Les deux operations ont la même priorité, donc le calcul se fait de gauche à droite.
+
+# Operators and parentheses: parentheses have the highest priority
+print()
+print((5 * ((25 % 13) + 100) / (2 * 13)) // 2)

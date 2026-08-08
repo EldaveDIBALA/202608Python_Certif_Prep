@@ -30,6 +30,10 @@ PCPP2 :
   <https://pythoninstitute.org/certification-tracks>
   ... Work in progress
 
+La doc de Python :
+
+  <https://docs.python.org/fr/3.14/tutorial/index.html>
+
 Useful repository for projects:
 
   [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x)

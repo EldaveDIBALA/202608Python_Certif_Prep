@@ -40,7 +40,7 @@ bc += 36 # bc = 2026
 
 print("En utilisant les raccourcis, x = y et ab = bc")
 print()
-print("En voici la preuve :\n", "\nx = ", x, ";\ny = ", y, ";\nab =", ab, ";\net bc =", bc, end="\n")
+print("En voici la preuve :", "\nx = ", x, ";\ny = ", y, ";\nab =", ab, ";\net bc =", bc, end="\n")
 print()
 
 # LAB

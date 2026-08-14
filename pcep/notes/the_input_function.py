@@ -25,3 +25,14 @@ print("\nVous avez", age_cette_annee, "ans d'âge, cette année." + "\nEt Votre 
 print()
 
 # Replication
+print("+" + 10 * "-" + "+")
+print(("|" + " " * 10 + "|\n") * 5, end="")
+print("+" + 10 * "-" + "+")
+print()
+
+print(" " * 6 + "*")
+print(" " * 3 + " " + "/" + " " * 3 + "\\")
+print(" " * 2 + " " + "/" + " " * 4 + " \\")
+print(" " * 3 + "=" * 7)
+print(" " + "/" + " " * 8 + " \\")
+print("/" + " " * 10 + " \\")

@@ -36,3 +36,50 @@ print(" " * 2 + " " + "/" + " " * 4 + " \\")
 print(" " * 3 + "=" * 7)
 print(" " + "/" + " " * 8 + " \\")
 print("/" + " " * 10 + " \\")
+
+# LAB 1
+# input a float value for variable a here
+a = float(input("Entrez la valeur de a :"))
+
+# input a float value for variable b here
+b = float(input("Entrez la valeur de b :"))
+print("\nJe vous remercie.")
+
+# output the result of addition here
+print("La somme entre a et b est :", a + b)
+
+# output the result of subtraction here
+print("La soustraction entre a et b est :", a - b)
+
+# output the result of multiplication here
+print("La multiplication entre a et b est :", a * b)
+
+# output the result of division here
+print("La division de a par b est :", a / b)
+
+print("\nThat's all, folks!")
+
+# LAB 2
+x = float(input("Enter value for x: "))
+
+y = 1 / (x + 1 / (x + 1 / (x + (1 / x)))) # Write your code here.
+
+print("y =", y)
+print()
+
+# LAB 3
+hour = int(input("Starting time (hours): "))
+mins = int(input("Starting time (minutes): "))
+dura = int(input("Event duration (minutes): "))
+
+# Write your code here.
+# Convert start time to total minutes since midnight
+total_mins = hour * 60 + mins
+# Add duration
+end_total_mins = total_mins + dura
+# Convert back to hours and minutes
+end_hour = end_total_mins // 60 % 24
+end_min = end_total_mins % 60
+
+print(f"{end_hour:02d}:{end_min:02d}")
+print()

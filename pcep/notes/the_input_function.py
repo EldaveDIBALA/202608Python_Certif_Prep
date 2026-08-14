@@ -36,3 +36,9 @@ print(" " * 2 + " " + "/" + " " * 4 + " \\")
 print(" " * 3 + "=" * 7)
 print(" " + "/" + " " * 8 + " \\")
 print("/" + " " * 10 + " \\")
+print()
+
+# Conversion d'un Integer enn String
+print("Je suis né en " + str(1990) + " à Brazzaville.")
+print()
+

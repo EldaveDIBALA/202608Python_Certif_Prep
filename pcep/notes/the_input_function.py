@@ -1,7 +1,6 @@
 # La fonction input() est capable de lire la donnée entrée par l'utilisateur
-# et de renvoyerla même donnée au programme en exécution.
-
-print("Dis-moi tout ...")
+# et de renvoyer la même donnée au programme en exécution.
+print("Bonjour ! Dis-moi tout ...")
 tout = input()
 print("Hmm...", tout, "...vraiment ?!")
 print()
@@ -17,3 +16,12 @@ sin = float(input("Entrez la valeur du côté A du triangle rectangle ABC : "))
 cos = float(input("Entrez la valeur du côté B du triangle rectangle ABC : "))
 print("L'hypothénus du triangle rectangle ABC est long de :", ((sin ** 2) + (cos ** 2)) **.5)
 print()
+
+# String operators - introduction
+name = input("Puis-je avoir votre nom, s'il vous plaît?")
+firstname = input("Puis-je avoir votre prénom, s'il vous plaît?")
+print("Je vous remercie.")
+print("\nVous avez", age_cette_annee, "ans d'âge, cette année." + "\nEt Votre nom est donc", firstname, name, sep=" ")
+print()
+
+# Replication

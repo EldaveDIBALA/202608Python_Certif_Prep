@@ -20,5 +20,21 @@ if visa == "Oui":
 elif visa == demande_visa:
     print("Revenez quand vous aurez récupéré votre passeport auprès du Consulat.")
 print(demarche) # S'affichera toujours, parce que hors de la boucle de conditions.
+print()
 
 #############################################################################################################
+
+num1 = int(input("Enter number 1: "))
+print()
+num2 = int(input("Enter number 2: "))
+print()
+num3 = int(input("Enter number 3: "))
+print()
+
+largest_number = num1
+
+if num2 > largest_number: largest_number = num2
+if num3 > largest_number: largest_number = num3
+
+print(largest_number, "is the largest number you entered.")
+print()

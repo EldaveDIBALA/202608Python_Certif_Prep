@@ -166,7 +166,21 @@ signe = "positif" if x > 0 else "négatif" if x < 0 else "nul"
 - les *guards* (`if`) s'ajoutent après le pattern ;
 - peut déstructurer listes, tuples, dicts et objets.
 
-### 3. Opérateurs logiques : `and`, `or`, `not`
+### 3. Pièges fréquents à l'examen
+
+- **Affectation vs comparaison** : `=` (affectation) ≠ `==` (comparaison). `if x = 5:` est un `SyntaxError` en Python.
+- **Walrus operator `:=`** (PEP 572, Python 3.8+) : affecte **et** renvoie une valeur dans une expression.
+- **Comparaison de types différents** : `1 == 1.0` → `True`, mais `1 is 1.0` → `False`.
+- **`in` / `not in`** : test d'appartenance, souvent préférable à une chaîne de `or`.
+- **Blocs vides** : utiliser `pass` si un bloc conditionnel ne doit rien faire (obligatoire syntaxiquement).
+
+### 4. Bonnes pratiques PEP 8
+
+- Ne pas comparer explicitement à `True` / `False` : préférer `if flag:` à `if flag == True:`.
+- Préférer `if not x:` à `if x == False:` ou `if x == []:`.
+- Limiter la profondeur d'imbrication des `if` (privilégier les retours anticipés / *guard clauses*).
+
+### 5. Opérateurs logiques
 
 *Source du cours : Logic and bit operations in Python | and, or, not (edube, PE1)*
 

@@ -3,12 +3,6 @@ import time
 
 ############################################################################################################################
 
-
-
-print(f"\n{"=" * 68}")
-
-############################################################################################################################
-
 """
 
 Exercise 4
@@ -18,19 +12,25 @@ each 0 with x, and print the modified string to the screen. Use the skeleton bel
 
 """
 
+print(f"\n{'*' * 68}\n")
+
 for digit in "0165031806510":
-    
     if digit == "0":
-        modified_string = digit.replace("0", "x") # Line of code.
-        #print(digit) # Line of code.
-        continue
-
-    #continue # Line of code.
-    print(modified_string)
-
-sys.exit()
+        print(digit.replace("0", "x")) # Line of code.
+        continue # Line of code.
+    print(digit) # Line of code.
     
-print(f"\n{"=" * 68}")
+print(f"\n{'*' * 68}\n")
+
+""" Autre solution """
+
+for digit in "0165031806510":
+    if digit == "0":
+        print("x", end="")
+        continue
+    print(digit, end="")
+    
+print(f"\n{'*' * 68}\n")
 
 ############################################################################################################################
 
@@ -47,9 +47,9 @@ below:
 for ch in "john.smith@pythoninstitute.org":
     if ch == "@":
         break # Line of code.
-    print(ch, end="")# Line of code.
+    print(ch, end="") # Line of code.
     
-print(f"\n{"=" * 68}")
+print(f"\n{'*' * 68}\n")
 
 ############################################################################################################################
 
@@ -71,12 +71,12 @@ while x < 11:
         # Line of code.
         print(x)
         
-    # Line of code.
+    # Line of code
     x += 1
     
-# print("Limite 11 atteinte.")
+print("\n🚨 Limite atteinte.")
 
-print(f"\n{"=" * 68}")
+print(f"\n{'*' * 68}\n")
 
 ############################################################################################################################
 
@@ -95,6 +95,6 @@ for i in range(0, 11):
         # Line of code.
         print(i)
 
-print(f"\n{"=" * 68}")
+print(f"\n{'*' * 68}")
 
 ############################################################################################################################

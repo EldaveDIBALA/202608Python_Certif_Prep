@@ -44,7 +44,7 @@ while True or invalid_input < 3:
                     invalid_input += 1
                 else:
                     break
-        sys.exit("\nNombre de tentatives dépassées. Arrêt du programme.")
+        sys.exit("\nNombre de tentatives dépassées. Arrêt du programme. \nMerci d'avoir utilisé le programme.\n")
             
     except ValueError:
         time.sleep(1)
@@ -53,4 +53,4 @@ while True or invalid_input < 3:
             invalid_input += 1
         else:
             break
-sys.exit("\nNombre de tentatives dépassées. Arrêt du programme.")
+sys.exit("\nNombre de tentatives dépassées. Arrêt du programme. \nMerci d'avoir utilisé le programme.\n")

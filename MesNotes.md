@@ -152,8 +152,6 @@ Une **variable** est un emplacement nommé et réservé en mémoire pour stocker
 
 **`==` vs `is` :** `==` compare les **valeurs**, `is` compare les **identités** (`id()`). Pour `None`, toujours utiliser `is None` / `is not None`.
 
-**Évaluation en court-circuit** (souvent demandée à l'examen) : très utile pour éviter des erreurs, par exemple `obj is not None and obj.valeur`.
-
 **Expression conditionnelle (ternaire) :**
 ```python
 resultat = valeur_si_vrai if condition else valeur_si_faux
@@ -184,36 +182,18 @@ signe = "positif" if x > 0 else "négatif" if x < 0 else "nul"
 
 ### 5. Opérateurs logiques
 
-```markdown
-# 📌 Pense-bête : Opérateurs Logiques en Python
+*Source du cours : Logic and bit operations in Python | and, or, not (edube, PE1)*
 
-Source du cours : [Logic and bit operations in Python | and, or, not](https://edube.org/learn/pe-1/logic-and-bit-operations-in-python-and-or-not-6)
+Les conditions du quotidien sont souvent composées de plusieurs critères. Les **opérateurs logiques** permettent de combiner plusieurs expressions booléennes (`True` / `False`) pour construire des conditions complexes.
 
----
+**`and` (conjonction)** — vrai uniquement si **toutes** les conditions le sont.
 
-## 💡 Concept Général
-
-Dans la vraie vie comme en programmation, les conditions sont souvent complexes. Les **opérateurs logiques** permettent d'associer plusieurs expressions booléennes (`True` ou `False`) pour créer des conditions composées.
-
----
-
-## 1. L'opérateur `and` (Conjonction)
-
-L'opérateur `and` requiert que **toutes les conditions** soient vraies simultanément.
-
-* **Priorité :** Plus faible que les opérateurs de comparaison (`>`, `==`, etc.).
-* **Règle :** Retourne `True` uniquement si $A$ **et** $B$ sont vrais.
-
-### 📊 Table de vérité (`and`)
-
-| Argument A | Argument B | A `and` B |
-| :---: | :---: | :---: |
+| A | B | A `and` B |
+|:---:|:---:|:---:|
 | `False` | `False` | **`False`** |
 | `False` | `True` | **`False`** |
 | `True` | `False` | **`False`** |
 | `True` | `True` | **`True`** |
-
-### 🐍 Exemple d'code
 
 ```python
 temps_libre = True
@@ -223,31 +203,18 @@ beau_temps = True
 if temps_libre and beau_temps:
     print("On va se promener !")
 
-counter = 10
-value = 100
-resultat = counter > 0 and value == 100  # Evalué à True
-
+counter, value = 10, 100
+resultat = counter > 0 and value == 100  # True
 ```
 
----
+**`or` (disjonction)** — vrai dès qu'**au moins une** condition l'est.
 
-## 2. L'opérateur `or` (Disjonction)
-
-L'opérateur `or` nécessite qu'**au moins une des conditions** soit vraie.
-
-* **Priorité :** Plus faible que l'opérateur `and` (de la même manière que l'addition `+` passe après la multiplication `*`).
-* **Règle :** Retourne `True` si $A$ **ou** $B$ (ou les deux) est vrai.
-
-### 📊 Table de vérité (`or`)
-
-| Argument A | Argument B | A `or` B |
-| --- | --- | --- |
+| A | B | A `or` B |
+|:---:|:---:|:---:|
 | `False` | `False` | **`False`** |
 | `False` | `True` | **`True`** |
 | `True` | `False` | **`True`** |
 | `True` | `True` | **`True`** |
-
-### 🐍 Exemple de code
 
 ```python
 moi_au_centre_commercial = False
@@ -256,54 +223,49 @@ toi_au_centre_commercial = True
 # Le cadeau est acheté si AU MOINS UNE personne est au centre commercial
 if moi_au_centre_commercial or toi_au_centre_commercial:
     print("Un cadeau pour Maman sera acheté !")
-
 ```
 
----
-
-## 3. L'opérateur `not` (Négation)
-
-L'opérateur unaire `not` inverse la valeur logique d'une expression.
-
-* **Priorité :** Très élevée (identique aux opérateurs unaires `+` et `-`).
-* **Règle :** Transforme le vrai en faux et le faux en vrai.
-
-### 📊 Table de vérité (`not`)
+**`not` (négation)** — opérateur unaire qui inverse la valeur logique.
 
 | Argument | `not` Argument |
-| --- | --- |
+|:---:|:---:|
 | `False` | **`True`** |
 | `True` | **`False`** |
-
-### 🐍 Exemple de code
 
 ```python
 il_pleut = False
 
-# not il_pleut devient True
-if not il_pleut:
+if not il_pleut:  # not il_pleut → True
     print("Pas besoin de parapluie !")
-
 ```
 
----
+**Priorité des opérateurs logiques** (du plus prioritaire au moins prioritaire, en l'absence de parenthèses) :
 
-## ⚡ Ordre de Priorité des Opérateurs
+1. Opérateurs de comparaison (`==`, `!=`, `>`, `<`, `>=`, `<=`) et `not` unaire — **priorité haute**
+2. `and` — **priorité moyenne**
+3. `or` — **priorité basse**
 
-En cas de conditions mixtes sans parenthèses, Python évalue les expressions selon cette hiérarchie :
+**Évaluation en court-circuit** (*short-circuit evaluation*, souvent demandée à l'examen) :
+- `and` : si le premier opérande est `False`, le second n'est pas évalué (le résultat est déjà déterminé).
+- `or` : si le premier opérande est `True`, le second n'est pas évalué.
+- Très utile pour éviter des erreurs, par exemple `obj is not None and obj.valeur` : le second test n'est exécuté que si `obj` n'est pas `None`.
 
-```text
-1. Opérateurs de comparaison (==, !=, >, <, >=, <=) et unary `not`  [Priorité Haute]
-2. `and`                                                           [Priorité Moyenne]
-3. `or`                                                            [Priorité Basse]
+> **Conseil :** utiliser des parenthèses `()` pour clarifier toute condition combinant `and`, `or` et `not`, et éviter les ambiguïtés.
 
-```
+### 4. Pièges fréquents à l'examen
 
-> **Conseil :** Utilisez toujours des parenthèses `()` pour clarifier les conditions complexes et éviter les ambiguïtés.
+- **Affectation vs comparaison** : `=` (affectation) ≠ `==` (comparaison). `if x = 5:` est un `SyntaxError` en Python.
+- **Walrus operator `:=`** (PEP 572, Python 3.8+) : affecte **et** renvoie une valeur dans une expression.
+- **Comparaison de types différents** : `1 == 1.0` → `True`, mais `1 is 1.0` → `False`.
+- **`in` / `not in`** : test d'appartenance, souvent préférable à une chaîne de `or`.
+- **Blocs vides** : utiliser `pass` si un bloc conditionnel ne doit rien faire (obligatoire syntaxiquement).
 
-```
+### 5. Bonnes pratiques PEP 8
 
-```
+- Ne pas comparer explicitement à `True` / `False` : préférer `if flag:` à `if flag == True:`.
+- Préférer `if not x:` à `if x == False:` ou `if x == []:`.
+- Limiter la profondeur d'imbrication des `if` (privilégier les retours anticipés / *guard clauses*).
+
 ---
 
 ## ⚡ Plan de révision — 45 jours restants

@@ -182,6 +182,128 @@ signe = "positif" if x > 0 else "négatif" if x < 0 else "nul"
 - Préférer `if not x:` à `if x == False:` ou `if x == []:`.
 - Limiter la profondeur d'imbrication des `if` (privilégier les retours anticipés / *guard clauses*).
 
+Voici des notes de révision structurées au format Markdown (`.md`), prêtes à être copiées-collées dans votre éditeur de texte.
+
+```markdown
+# 📌 Pense-bête : Opérateurs Logiques en Python
+
+Source du cours : [Logic and bit operations in Python | and, or, not](https://edube.org/learn/pe-1/logic-and-bit-operations-in-python-and-or-not-6)
+
+---
+
+## 💡 Concept Général
+
+Dans la vraie vie comme en programmation, les conditions sont souvent complexes. Les **opérateurs logiques** permettent d'associer plusieurs expressions booléennes (`True` ou `False`) pour créer des conditions composées.
+
+---
+
+## 1. L'opérateur `and` (Conjonction)
+
+L'opérateur `and` requiert que **toutes les conditions** soient vraies simultanément.
+
+* **Priorité :** Plus faible que les opérateurs de comparaison (`>`, `==`, etc.).
+* **Règle :** Retourne `True` uniquement si $A$ **et** $B$ sont vrais.
+
+### 📊 Table de vérité (`and`)
+
+| Argument A | Argument B | A `and` B |
+| :---: | :---: | :---: |
+| `False` | `False` | **`False`** |
+| `False` | `True` | **`False`** |
+| `True` | `False` | **`False`** |
+| `True` | `True` | **`True`** |
+
+### 🐍 Exemple d'code
+
+```python
+temps_libre = True
+beau_temps = True
+
+# La promenade n'a lieu que si TOUTES les conditions sont vérifiées
+if temps_libre and beau_temps:
+    print("On va se promener !")
+
+counter = 10
+value = 100
+resultat = counter > 0 and value == 100  # Evalué à True
+
+```
+
+---
+
+## 2. L'opérateur `or` (Disjonction)
+
+L'opérateur `or` nécessite qu'**au moins une des conditions** soit vraie.
+
+* **Priorité :** Plus faible que l'opérateur `and` (de la même manière que l'addition `+` passe après la multiplication `*`).
+* **Règle :** Retourne `True` si $A$ **ou** $B$ (ou les deux) est vrai.
+
+### 📊 Table de vérité (`or`)
+
+| Argument A | Argument B | A `or` B |
+| --- | --- | --- |
+| `False` | `False` | **`False`** |
+| `False` | `True` | **`True`** |
+| `True` | `False` | **`True`** |
+| `True` | `True` | **`True`** |
+
+### 🐍 Exemple de code
+
+```python
+moi_au_centre_commercial = False
+toi_au_centre_commercial = True
+
+# Le cadeau est acheté si AU MOINS UNE personne est au centre commercial
+if moi_au_centre_commercial or toi_au_centre_commercial:
+    print("Un cadeau pour Maman sera acheté !")
+
+```
+
+---
+
+## 3. L'opérateur `not` (Négation)
+
+L'opérateur unaire `not` inverse la valeur logique d'une expression.
+
+* **Priorité :** Très élevée (identique aux opérateurs unaires `+` et `-`).
+* **Règle :** Transforme le vrai en faux et le faux en vrai.
+
+### 📊 Table de vérité (`not`)
+
+| Argument | `not` Argument |
+| --- | --- |
+| `False` | **`True`** |
+| `True` | **`False`** |
+
+### 🐍 Exemple de code
+
+```python
+il_pleut = False
+
+# not il_pleut devient True
+if not il_pleut:
+    print("Pas besoin de parapluie !")
+
+```
+
+---
+
+## ⚡ Ordre de Priorité des Opérateurs
+
+En cas de conditions mixtes sans parenthèses, Python évalue les expressions selon cette hiérarchie :
+
+```text
+1. Opérateurs de comparaison (==, !=, >, <, >=, <=) et unary `not`  [Priorité Haute]
+2. `and`                                                           [Priorité Moyenne]
+3. `or`                                                            [Priorité Basse]
+
+```
+
+> **Conseil :** Utilisez toujours des parenthèses `()` pour clarifier les conditions complexes et éviter les ambiguïtés.
+
+```
+
+```
 ---
 
 ## ⚡ Plan de révision — 45 jours restants

@@ -182,8 +182,6 @@ signe = "positif" if x > 0 else "négatif" if x < 0 else "nul"
 - Préférer `if not x:` à `if x == False:` ou `if x == []:`.
 - Limiter la profondeur d'imbrication des `if` (privilégier les retours anticipés / *guard clauses*).
 
-Voici des notes de révision structurées au format Markdown (`.md`), prêtes à être copiées-collées dans votre éditeur de texte.
-
 ```markdown
 # 📌 Pense-bête : Opérateurs Logiques en Python
 

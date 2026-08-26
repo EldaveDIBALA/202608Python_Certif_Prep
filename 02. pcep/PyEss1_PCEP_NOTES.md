@@ -238,7 +238,70 @@ if not il_pleut:  # not il_pleut → True
 
 > **Conseil :** utiliser des parenthèses `()` pour clarifier toute condition combinant `and`, `or` et `not`, et éviter les ambiguïtés.
 
-### 4. Pièges fréquents à l'examen
+### 4. Équivalences logiques, lois de De Morgan et opérateurs bit à bit
+
+*Source du cours : Logic and bit operations in Python | and, or, not (edube, PE1)*
+
+**Expressions logiquement équivalentes**
+
+Certaines conditions produisent toujours le même résultat booléen ("pairwise equivalent") :
+
+```python
+var = 1
+print(var > 0)          # True
+print(not (var <= 0))   # True
+
+print(var != 0)         # True
+print(not (var == 0))   # True
+```
+
+**Lois de De Morgan**
+
+Elles permettent d'exprimer la négation d'une conjonction ou d'une disjonction :
+
+1. La négation d'une conjonction est la disjonction des négations.
+2. La négation d'une disjonction est la conjonction des négations.
+
+```python
+not (p and q) == (not p) or (not q)
+not (p or q)  == (not p) and (not q)
+```
+
+> ⚠️ Les opérateurs logiques à deux arguments ne peuvent pas être utilisés sous forme abrégée (`op=`).
+
+**Valeurs logiques vs bits individuels**
+
+- **Opérateurs logiques** (`and`, `or`, `not`) évaluent la valeur globale de l'argument : `0` = `False`, toute valeur différente de zéro = `True`.
+  ```python
+  i = 1
+  j = not not i  # Assigne la valeur booléenne True à j
+  ```
+- **Opérateurs bit à bit** (`&`, `|`, `~`, `^`) manipulent chaque bit séparément. Les arguments **doivent être des entiers** (les `float` sont interdits).
+
+**Tables de vérité des opérateurs bit à bit**
+
+*Opérateurs binaires (`&`, `|`, `^`)*
+
+| Argument A | Argument B | A `&` B (AND) | A `\|` B (OR) | A `^` B (XOR) |
+|:---:|:---:|:---:|:---:|:---:|
+| 0 | 0 | 0 | 0 | 0 |
+| 0 | 1 | 0 | 1 | 1 |
+| 1 | 0 | 0 | 1 | 1 |
+| 1 | 1 | 1 | 1 | 0 |
+
+*Opérateur unaire (`~`)*
+
+| Argument | `~` Argument (NOT) |
+|:---:|:---:|
+| 0 | 1 |
+| 1 | 0 |
+
+**Règles mémotechniques :**
+- `&` exige exactement deux `1` pour donner `1`.
+- `|` exige au moins un `1` pour donner `1`.
+- `^` exige exactement un `1` pour donner `1`.
+
+### 5. Pièges fréquents à l'examen
 
 - **Affectation vs comparaison** : `=` (affectation) ≠ `==` (comparaison). `if x = 5:` est un `SyntaxError` en Python.
 - **Walrus operator `:=`** (PEP 572, Python 3.8+) : affecte **et** renvoie une valeur dans une expression.
@@ -246,7 +309,7 @@ if not il_pleut:  # not il_pleut → True
 - **`in` / `not in`** : test d'appartenance, souvent préférable à une chaîne de `or`.
 - **Blocs vides** : utiliser `pass` si un bloc conditionnel ne doit rien faire (obligatoire syntaxiquement).
 
-### 5. Bonnes pratiques PEP 8
+### 6. Bonnes pratiques PEP 8
 
 - Ne pas comparer explicitement à `True` / `False` : préférer `if flag:` à `if flag == True:`.
 - Préférer `if not x:` à `if x == False:` ou `if x == []:`.

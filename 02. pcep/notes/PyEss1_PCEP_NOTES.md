@@ -238,7 +238,7 @@ if not il_pleut:  # not il_pleut → True
 
 > **Conseil :** utiliser des parenthèses `()` pour clarifier toute condition combinant `and`, `or` et `not`, et éviter les ambiguïtés.
 
-### 4. Équivalences logiques, lois de De Morgan et opérateurs bit à bit
+### 4. Logique globale vs bit à bit, lois de De Morgan
 
 *Source du cours : Logic and bit operations in Python | and, or, not (edube, PE1)*
 
@@ -255,9 +255,41 @@ print(var != 0)         # True
 print(not (var == 0))   # True
 ```
 
-**Lois de De Morgan**
+**Opérateurs logiques vs bit à bit — la distinction clé**
 
-Elles permettent d'exprimer la négation d'une conjonction ou d'une disjonction :
+- **Logique** (`and`, `or`, `not`) : traite les variables **dans leur ensemble** comme des valeurs booléennes. `0` = `False`, toute valeur non nulle = `True`.
+- **Bit à bit** (`&`, `|`, `^`, `~`) : compare ou inverse **chaque bit individuellement** dans la représentation binaire des entiers (codés en complément à deux). Les arguments doivent être des **entiers** — les `float` sont interdits.
+
+**Exemple de différence d'évaluation** — pour `i = 15` et `j = 22` :
+
+```python
+i = 15
+j = 22
+
+log = i and j
+print("logique (i and j) :", log)   # True (les deux valeurs sont non nulles)
+
+bit = i & j
+print("bit à bit (i & j)  :", bit)  # 6 (comparaison bit à bit)
+
+print("not i :", not i)             # False (i n'est pas zéro)
+print("~i    :", ~i)                # -16 (complément à deux : -(i + 1))
+
+k = 1
+m = not not k
+print("not not k :", m)             # True — double négation logique
+```
+
+**Schéma binaire (i = 15, j = 22) :**
+```text
+i (15) : ... 0 0 0 0 1 1 1 1
+j (22) : ... 0 0 0 1 0 1 1 0
+------------------------------
+i & j  : ... 0 0 0 0 0 1 1 0   → 6
+~i     : ... 1 1 1 1 0 0 0 0   → -16
+```
+
+**Lois de De Morgan**
 
 1. La négation d'une conjonction est la disjonction des négations.
 2. La négation d'une disjonction est la conjonction des négations.
@@ -266,17 +298,6 @@ Elles permettent d'exprimer la négation d'une conjonction ou d'une disjonction 
 not (p and q) == (not p) or (not q)
 not (p or q)  == (not p) and (not q)
 ```
-
-> ⚠️ Les opérateurs logiques à deux arguments ne peuvent pas être utilisés sous forme abrégée (`op=`).
-
-**Valeurs logiques vs bits individuels**
-
-- **Opérateurs logiques** (`and`, `or`, `not`) évaluent la valeur globale de l'argument : `0` = `False`, toute valeur différente de zéro = `True`.
-  ```python
-  i = 1
-  j = not not i  # Assigne la valeur booléenne True à j
-  ```
-- **Opérateurs bit à bit** (`&`, `|`, `~`, `^`) manipulent chaque bit séparément. Les arguments **doivent être des entiers** (les `float` sont interdits).
 
 **Tables de vérité des opérateurs bit à bit**
 
@@ -300,6 +321,21 @@ not (p or q)  == (not p) and (not q)
 - `&` exige exactement deux `1` pour donner `1`.
 - `|` exige au moins un `1` pour donner `1`.
 - `^` exige exactement un `1` pour donner `1`.
+
+**Formes abrégées d'affectation (compound assignment) bit à bit**
+
+> ⚠️ Contrairement aux opérateurs bit à bit, les opérateurs **logiques** à deux arguments (`and`, `or`) ne peuvent pas être utilisés sous forme abrégée.
+
+| Forme abrégée | Équivalent complet |
+|---|---|
+| `x &= y` | `x = x & y` |
+| `x \|= y` | `x = x \| y` |
+| `x ^= y` | `x = x ^ y` |
+
+**Ressources complémentaires :**
+- [Logic and bit operations in Python](https://edube.org/learn/pe-1/logic-and-bit-operations-in-python-3) — cours OpenEDG Python Institute (edube, PE1)
+- [Bitwise operations on integer types](https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types) — documentation officielle Python
+- [Boolean operations — and, or, not](https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not) — documentation officielle Python
 
 ### 5. Pièges fréquents à l'examen
 

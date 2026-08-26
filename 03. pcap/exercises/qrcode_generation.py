@@ -29,7 +29,7 @@ qr.add_data(qr_code)  # Ajoute les données à encoder dans le QR code
 qr.make(fit = True)
 
 qr_code_image = qr.make_image(fill_color = "black", back_color = "white")
-qr_code_image.save(os.path.join("/Users/eldavedibala/Documents/Engineer/SDET/202608Python_Certif_Prep/03. pcap", f"{qr_code}_qrcode.png"))
+qr_code_image.save(os.path.join("/Users/eldavedibala/Documents/Engineer/SDET/202608Python_Certif_Prep/03. pcap/exercises", f"{qr_code}_qrcode.png"))
 
 qr.print_ascii(invert = True)  # Affiche le QR code dans la console en utilisant des caractères ASCII
 

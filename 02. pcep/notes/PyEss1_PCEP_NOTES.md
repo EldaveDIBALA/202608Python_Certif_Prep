@@ -416,7 +416,7 @@ En s'appuyant sur `x ^ 1 = ~x` et `x ^ 0 = x`, appliquer le masque bascule le bi
   result:         ... ~x ...
 ```
 
-```pytho`
+```python`
 flag_register ^= mask
 ```
 

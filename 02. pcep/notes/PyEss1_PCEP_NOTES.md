@@ -352,7 +352,7 @@ Pour cibler le bit en position `n`, on construit un masque avec un seul bit à `
 mask = 1 << 3  # Binaire : 0b1000 (décimal 8)
 ```
 
-**1. Vérifier l'état d'un bit — `&` (AND)**
+**Vérifier l'état d'un bit — `&` (AND)**
 
 Puisque `x & 1 = x` et `x & 0 = 0`, le masquage isole le bit ciblé et met tous les autres à zéro.
 
@@ -375,7 +375,7 @@ else:
     pass
 ```
 
-**2. Fixer un bit à 1 — `|` (OR)**
+**Fixer un bit à 1 — `|` (OR)**
 
 Puisque `x | 1 = 1` et `x | 0 = x`, appliquer le masque force le bit ciblé à `1` sans modifier les bits voisins.
 
@@ -390,7 +390,7 @@ Puisque `x | 1 = 1` et `x | 0 = x`, appliquer le masque force le bit ciblé à `
 flag_register |= mask
 ```
 
-**3. Effacer / réinitialiser un bit à 0 — `&` combiné à `~` (NOT)**
+**Effacer / réinitialiser un bit à 0 — `&` combiné à `~` (NOT)**
 
 Inverser le masque produit une séquence de `1` partout, sauf un `0` à la position ciblée.
 
@@ -405,7 +405,7 @@ Inverser le masque produit une séquence de `1` partout, sauf un `0` à la posit
 flag_register &= ~mask
 ```
 
-**4. Inverser (toggle) un bit — `^` (XOR)**
+**Inverser (toggle) un bit — `^` (XOR)**
 
 En s'appuyant sur `x ^ 1 = ~x` et `x ^ 0 = x`, appliquer le masque bascule le bit ciblé de `0` à `1` ou de `1` à `0`.
 

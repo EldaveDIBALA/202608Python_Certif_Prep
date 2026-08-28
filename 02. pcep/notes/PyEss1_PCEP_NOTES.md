@@ -337,6 +337,89 @@ not (p or q)  == (not p) and (not q)
 - [Bitwise operations on integer types](https://docs.python.org/3/library/stdtypes.html#bitwise-operations-on-integer-types) — documentation officielle Python
 - [Boolean operations — and, or, not](https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not) — documentation officielle Python
 
+**Techniques de bit-masking**
+
+Les techniques de **bit-masking** (masquage de bits) permettent de manipuler ou d'inspecter des bits précis d'un entier, sans toucher aux autres. Un **masque de bits** (*bit mask*) est une séquence de bits construite pour cibler l'opération voulue ; combiné aux opérateurs bit à bit (`&`, `|`, `^`, `~`), il permet de **vérifier**, **effacer**, **fixer** ou **inverser** l'état d'un bit individuel.
+
+**Principe de base**
+
+Dans un registre de drapeaux (*flags*) ou une donnée binaire compactée, chaque bit représente un état booléen indépendant (0 ou 1). Les positions de bits sont indexées à partir de 0, en partant du bit de poids faible (le plus à droite).
+
+Pour cibler le bit en position `n`, on construit un masque avec un seul bit à `1` à cette position :
+
+```python
+# Cible le 3e bit (poids 2^3 = 8)
+mask = 1 << 3  # Binaire : 0b1000 (décimal 8)
+```
+
+**1. Vérifier l'état d'un bit — `&` (AND)**
+
+Puisque `x & 1 = x` et `x & 0 = 0`, le masquage isole le bit ciblé et met tous les autres à zéro.
+
+```text
+  flag_register:  ... x ...
+& mask:           ... 1 ...
+---------------------------
+  result:         ... x ...  (non nul si le bit est à 1, 0 sinon)
+```
+
+```python
+flag_register = 0x1234
+mask = 1 << 3
+
+if flag_register & mask:
+    # Le bit 3 est à 1
+    pass
+else:
+    # Le bit 3 est à 0
+    pass
+```
+
+**2. Fixer un bit à 1 — `|` (OR)**
+
+Puisque `x | 1 = 1` et `x | 0 = x`, appliquer le masque force le bit ciblé à `1` sans modifier les bits voisins.
+
+```text
+  flag_register:  ... x ...
+| mask:           ... 1 ...
+---------------------------
+  result:         ... 1 ...
+```
+
+```python
+flag_register |= mask
+```
+
+**3. Effacer / réinitialiser un bit à 0 — `&` combiné à `~` (NOT)**
+
+Inverser le masque produit une séquence de `1` partout, sauf un `0` à la position ciblée.
+
+```text
+  flag_register:  ... x ...
+& ~mask:          ... 0 ...
+---------------------------
+  result:         ... 0 ...
+```
+
+```python
+flag_register &= ~mask
+```
+
+**4. Inverser (toggle) un bit — `^` (XOR)**
+
+En s'appuyant sur `x ^ 1 = ~x` et `x ^ 0 = x`, appliquer le masque bascule le bit ciblé de `0` à `1` ou de `1` à `0`.
+
+```text
+  flag_register:  ... x ...
+^ mask:           ... 1 ...
+---------------------------
+  result:         ... ~x ...
+```
+
+```python`
+flag_register ^= mask
+```
+
 ### 5. Pièges fréquents à l'examen
 
 - **Affectation vs comparaison** : `=` (affectation) ≠ `==` (comparaison). `if x = 5:` est un `SyntaxError` en Python.

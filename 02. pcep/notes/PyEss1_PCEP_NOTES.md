@@ -416,8 +416,94 @@ En s'appuyant sur `x ^ 1 = ~x` et `x ^ 0 = x`, appliquer le masque bascule le bi
   result:         ... ~x ...
 ```
 
-```python`
+```python
 flag_register ^= mask
+```
+# Python Bitwise Operations & Bit Shifting
+
+**Python Bitwise Operations & Bit Shifting**
+
+Bitwise operators and bit shifts allow direct manipulation of individual bits within integer values. In Python, integers are treated as sequences of binary digits, enabling high-performance operations, flag management, and fast arithmetic.
+
+---
+
+### Bit Shifting Operations
+
+Bit shifting moves the binary representation of a number to the left or right by a specified number of bit positions.
+
+```text
+Left Shift (<<):  0001 0001 (17) << 2  -->  0100 0100 (68)  [Multiplies by 2^2]
+Right Shift (>>): 0001 0001 (17) >> 1  -->  0000 1000 (8)   [Integer divides by 2^1]
+
+```
+
+**Left Shift Operator (`<<`)**
+Shifting binary digits to the left shifts zeros into the rightmost position. Shifting an integer left by $n$ bits is equivalent to multiplying the value by $2^n$.
+
+**Right Shift Operator (`>>`)**
+Shifting binary digits to the right discards the rightmost bits. Shifting an integer right by $n$ bits is equivalent to performing integer division by $2^n$.
+
+```python
+value = 17
+
+# Shift left by 2 positions (17 * 2^2 = 68)
+shifted_left = value << 2
+
+# Shift right by 1 position (17 // 2^1 = 8)
+shifted_right = value >> 1
+
+print(value, shifted_left, shifted_right)  # Output: 17 68 8
+
+```
+
+u
+---
+
+### Core Bit-Masking Techniques
+
+Bit masks isolate or modify specific bits using bitwise binary operations alongside shift operators.
+
+Checking a Bit State
+The bitwise **AND** (`&`) operator evaluates to non-zero if the target bit is set to 1, and zero if it is reset to 0.
+
+```python
+flag_register = 0b10001  # Decimal 17
+mask = 1 << 4           # Target bit 4
+
+is_set = (flag_register & mask) != 0  # True
+
+```
+
+Setting a Bit (To 1)
+The bitwise **OR** (`|`) operator forces the target bit to `1` without changing any surrounding bit values.
+
+```python
+flag_register |= (1 << 3)  # Sets bit position 3
+
+```
+
+Clearing/Resetting a Bit (To 0)
+Combining the bitwise **AND** (`&`) with the bitwise **NOT** (`~`) applies an inverted mask containing a `0` exclusively at the target index.
+
+```python
+flag_register &= ~(1 << 0)  # Clears bit position 0
+
+```
+
+Toggling/Negating a Bit
+The bitwise **XOR** (`^`) operator flips the target bit state, converting a `0` to a `1` or a `1` to a `0`.
+
+```text
+  flag_register:  ... x ...
+^ mask:           ... 1 ...
+---------------------------
+  result:         ... ~x ..
+
+```
+
+```python
+flag_register ^= (1 << 4)  # Flips the state of bit position 4
+
 ```
 
 ### 5. Pièges fréquents à l'examen

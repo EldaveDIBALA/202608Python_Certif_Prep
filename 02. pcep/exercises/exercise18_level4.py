@@ -1,25 +1,23 @@
 '''
-Exercice 17 — Compter les occurrences
+Exercice 18 — Copier les éléments intéressants
 
 À partir de :
 
-[2, 5, 2, 8, 5, 2, 9]
+[3, 8, 12, 5, 7, 20, 1]
 
-demande à l'utilisateur un nombre et indique combien de fois il apparaît.
+crée une nouvelle liste contenant uniquement les nombres supérieurs à 10.
 
-Exemple :
+Résultat attendu :
 
-Nombre : 2
-Le nombre apparaît 3 fois.
+[12, 20]
 '''
 
-my_list = [2, 5, 2, 8, 5, 2, 9] 
+numbers = [3, 8, 12, 5, 7, 20, 1]
+numbers_greater_than_10 = []
 
-number = int(input("Enter a number: "))
-compteur = 0
+for element in numbers:
+  
+  if element > 10:
+    numbers_greater_than_10.append(element)
 
-for i in my_list:
-  if number == i:
-    compteur += 1
-  else:
-    print(f"{number} is not in {my_list}.")
+print(numbers_greater_than_10)
